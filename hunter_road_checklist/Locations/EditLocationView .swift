@@ -53,6 +53,7 @@ struct EditLocationView: View {
     @State private var equipmentItems: [LocationEquipmentRowItem] = []
 
     private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255.0)
+    private let horizontalPadding: CGFloat = 16
 
     var body: some View {
         ZStack {
@@ -145,7 +146,7 @@ struct EditLocationView: View {
                         .multilineTextAlignment(.center)
 
                     // BUTTONS: DELETE IMAGE / UPLOAD NEW IMAGE (как в EditGameView)
-                    HStack(spacing: 12) {
+                    HStack(spacing: 0) {
                         Button {
                             localUserImageData = nil
                             hasLocalImageOverride = true
@@ -154,7 +155,7 @@ struct EditLocationView: View {
                                 Image("delete_button")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 48)
+                                    .frame(width: 180, height: 48)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
 
                                 HStack(spacing: 8) {
@@ -177,7 +178,7 @@ struct EditLocationView: View {
                                 Image("upload_button")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 48)
+                                    .frame(width: 180, height: 48)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
 
                                 HStack(spacing: 4) {
@@ -236,7 +237,7 @@ struct EditLocationView: View {
                             Image("save_button")
                                 .resizable()
                                 .scaledToFill()
-                                .frame(height: 52)
+                                .frame(maxWidth: .infinity, minHeight: 52, maxHeight: 52)
                                 .clipShape(RoundedRectangle(cornerRadius: 32))
 
                             Text("Save changes")
@@ -245,7 +246,7 @@ struct EditLocationView: View {
                         }
                     }
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, horizontalPadding)
                 .padding(.top, 24)
                 .padding(.bottom, 24)
             }
@@ -290,8 +291,9 @@ struct EditLocationView: View {
                     checklistStore.deleteLocationItem(location)
                     dismiss()
                 } label: {
-                    Image("trash_button")
-                        .renderingMode(.original)
+                    Image(systemName: "trash")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.red)
                 }
             }
             ToolbarItemGroup(placement: .keyboard) {

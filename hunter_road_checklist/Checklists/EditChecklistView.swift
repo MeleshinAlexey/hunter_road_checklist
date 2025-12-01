@@ -117,14 +117,13 @@ struct EditChecklistView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
+                Button(role: .destructive) {
                     checklistStore.deleteChecklist(checklist)
                     dismiss()
                 } label: {
-                    Image("trash_button")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width:50, height: 50)
+                    Image(systemName: "trash")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.red)
                 }
             }
 

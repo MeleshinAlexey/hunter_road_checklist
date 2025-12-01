@@ -36,6 +36,7 @@ struct EditInventoryItemView: View {
     }
 
 private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255.0)
+private let horizontalPadding: CGFloat = 16
 
     var body: some View {
         ZStack {
@@ -75,7 +76,7 @@ private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255
                                     .frame(width: 120, height: 120)
                             }
                         }
-                        .padding(.leading, 8)
+                        
 
                         VStack(alignment: .leading, spacing: 8) {
                             // Name in rectangle
@@ -130,7 +131,7 @@ private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255
                         .multilineTextAlignment(.center)
 
                     // BUTTONS: DELETE IMAGE / UPLOAD NEW IMAGE
-                    HStack(spacing: 12) {
+                    HStack(spacing: 0) {
                         Button {
                             localUserImageData = nil
                             hasLocalImageOverride = true
@@ -139,7 +140,7 @@ private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255
                                 Image("delete_button")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 48)
+                                    .frame(width: 180, height: 48)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
 
                                 HStack(spacing: 8) {
@@ -162,7 +163,7 @@ private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255
                                 Image("upload_button")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 48)
+                                    .frame(width: 180, height: 48)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
 
                                 HStack(spacing: 4) {
@@ -218,6 +219,7 @@ private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255
                         }
                     }
                 }
+                .padding(.horizontal, horizontalPadding)
             }
             .onTapGesture {
                 focusedField = nil
@@ -259,14 +261,12 @@ private let backgroundColor = Color(red: 39/255.0, green: 46/255.0, blue: 75/255
                     .foregroundColor(.white)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
+                Button(role: .destructive) {
                     checklistStore.deleteInventoryItem(item)
                     dismiss()
                 } label: {
-                    Image("trash_button")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 60, height: 60)
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
                 }
             }
             ToolbarItemGroup(placement: .keyboard) {

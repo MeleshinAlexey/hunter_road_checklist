@@ -85,7 +85,6 @@ struct EditGameView: View {
                                     .cornerRadius(20)
                             }
                         }
-                        .padding(.leading, 8)
 
                         // NAME RECTANGLE (как Name у инвентаря)
                         VStack(alignment: .leading, spacing: 8) {
@@ -131,7 +130,7 @@ struct EditGameView: View {
                                     .scrollContentBackground(.hidden)
                             }
                         )
-
+                    
                     // IMAGE INFO TEXT
                     Text("You can upload an image up to 20 MB.")
                         .font(.footnote)
@@ -140,7 +139,7 @@ struct EditGameView: View {
                         .multilineTextAlignment(.center)
 
                     // BUTTONS: DELETE IMAGE / UPLOAD NEW IMAGE
-                    HStack(spacing: 12) {
+                    HStack(spacing: 0) {
                         Button {
                             localUserImageData = nil
                             hasLocalImageOverride = true
@@ -149,7 +148,8 @@ struct EditGameView: View {
                                 Image("delete_button")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 48)
+//                                    .frame(maxWidth: .infinity)
+                                    .frame(width: 180,height: 48)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
 
                                 HStack(spacing: 8) {
@@ -160,7 +160,7 @@ struct EditGameView: View {
                                 }
                                 .foregroundColor(.white)
                             }
-                            .frame(maxWidth: .infinity)
+//                            .frame(maxWidth: .infinity)
                         }
 
                         PhotosPicker(
@@ -172,10 +172,11 @@ struct EditGameView: View {
                                 Image("upload_button")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 48)
+//                                    .frame(maxWidth: .infinity)
+                                    .frame(width: 180, height: 48)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
 
-                                HStack(spacing: 4) {
+                                HStack(spacing: 2) {
                                     Image(systemName: "square.and.arrow.up")
                                         .font(.system(size: 16, weight: .semibold))
 
@@ -183,13 +184,11 @@ struct EditGameView: View {
                                         .font(.system(size: 14, weight: .semibold))
                                 }
                                 .foregroundColor(.white)
-                                .padding(.horizontal, 10)
-                                .frame(maxWidth: .infinity)
                             }
-                            .frame(maxWidth: .infinity)
+//                            .frame(maxWidth: .infinity)
                         }
                     }
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                     // EQUIPMENT HEADER
                     Text("Necessary equipment for hunting:")
@@ -262,7 +261,8 @@ struct EditGameView: View {
                         }
                     }
                 }
-                .padding(.horizontal, 20)
+                .frame(maxWidth: 360, alignment: .leading)
+                .padding(.horizontal, 8)
                 .padding(.top, 24)
                 .padding(.bottom, 24)
             }
@@ -303,13 +303,14 @@ struct EditGameView: View {
                     .foregroundColor(.white)
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
+                Button(role: .destructive) {
                     // Удаляем текущую игру из стора и закрываем экран
                     checklistStore.deleteGameItem(game)
                     dismiss()
                 } label: {
-                    Image("trash_button")
-                        .renderingMode(.original)
+                    Image(systemName: "trash")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.red)
                 }
             }
             ToolbarItemGroup(placement: .keyboard) {
