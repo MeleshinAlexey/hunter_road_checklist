@@ -212,6 +212,7 @@ struct GameView_Previews: PreviewProvider {
         NavigationStack {
             GameView()
                 .environmentObject(ChecklistStore())
+                .dynamicTypeSize(.medium)
         }
     }
 }

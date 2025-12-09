@@ -131,6 +131,7 @@ struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             LocationView()
+                .dynamicTypeSize(.medium)
         }
     }
 }

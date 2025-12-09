@@ -134,4 +134,5 @@ private struct InventoryRow: View {
 #Preview {
     InventoryView()
         .environmentObject(ChecklistStore())
+        .dynamicTypeSize(.medium)
 }

@@ -382,5 +382,6 @@ struct EditGameView: View {
             )
         )
         .environmentObject(ChecklistStore())
+        .dynamicTypeSize(.medium)
     }
 }

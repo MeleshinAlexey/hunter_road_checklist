@@ -414,5 +414,6 @@ struct GameCreationView: View {
     NavigationStack {
         GameCreationView()
             .environmentObject(ChecklistStore())
+            .dynamicTypeSize(.medium)
     }
 }

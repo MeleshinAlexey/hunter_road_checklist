@@ -291,5 +291,6 @@ private let horizontalPadding: CGFloat = 16
             )
         )
         .environmentObject(ChecklistStore())
+        .dynamicTypeSize(.medium)
     }
 }

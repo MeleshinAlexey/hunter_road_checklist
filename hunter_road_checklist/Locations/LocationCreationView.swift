@@ -395,5 +395,6 @@ struct LocationCreationView: View {
     NavigationStack {
         LocationCreationView()
             .environmentObject(ChecklistStore())
+            .dynamicTypeSize(.medium)
     }
 }

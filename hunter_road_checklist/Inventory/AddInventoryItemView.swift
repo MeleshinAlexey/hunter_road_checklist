@@ -310,5 +310,6 @@ var isDescriptionError: Bool { showErrors && description.isEmpty }
             // preview stub
             print("Saved item: \(item.title), \(item.quantity), \(item.description)")
         }
+        .dynamicTypeSize(.medium)
     }
 }

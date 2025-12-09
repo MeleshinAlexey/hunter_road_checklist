@@ -485,4 +485,5 @@ struct ChecklistsView: View {
 #Preview {
     ChecklistsView(tab: .checklists)
         .environmentObject(ChecklistStore())
+        .dynamicTypeSize(.medium)
 }

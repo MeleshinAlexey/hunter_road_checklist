@@ -389,5 +389,6 @@ struct EditLocationView: View {
             )
         )
         .environmentObject(ChecklistStore())
+        .dynamicTypeSize(.medium)
     }
 }

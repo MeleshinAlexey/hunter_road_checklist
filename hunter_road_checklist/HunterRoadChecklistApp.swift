@@ -11,7 +11,8 @@ import SwiftUI
 struct HunterRoadChecklistApp: App {
     var body: some Scene {
         WindowGroup {
-            RootTabView()   
+            RootTabView()
+                .dynamicTypeSize(.medium)
         }
     }
 }

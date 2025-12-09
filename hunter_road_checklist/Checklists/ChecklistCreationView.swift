@@ -147,5 +147,6 @@ struct ChecklistOptionRow: View {
     NavigationStack {
         ChecklistCreationView()
             .environmentObject(ChecklistStore())
+            .dynamicTypeSize(.medium)
     }
 }

@@ -82,4 +82,5 @@ struct RootTabView: View {
 
 #Preview {
     RootTabView()
+        .dynamicTypeSize(.medium)
 }
